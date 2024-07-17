@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search by Ingredient</h1>
+<form method="get" action="{% url 'search_by_ingredient' %}">
+    <label for="ingredients">Enter ingredients (comma-separated):</label>
+    <input type="text" id="ingredients" name="ingredients">
+    <button type="submit">Search</button>
+</form>
+
+{% if recipes %}
+    <h2>Recipes:</h2>
+    <ul>
+    {% for recipe in recipes %}
+    <li>
+        <h3>{{ recipe.title }}</h3>
+        <img src="{{ recipe.image }}" alt="{{ recipe.title }}" width="200">
+        <p>Used Ingredients:</p>
+        <ul>
+            {% for ingredient in recipe.usedIngredients %}
+                <li>{{ ingredient.original }}</li>
+            {% endfor %}
+        </ul>
+        <p>Missed Ingredients:</p>
+        <ul>
+            {% for ingredient in recipe.missedIngredients %}
+                <li>{{ ingredient.original }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
