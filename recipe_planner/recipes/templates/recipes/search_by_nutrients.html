@@ -1,0 +1,40 @@
+{% extends "recipes/base.html" %}
+
+{% block content %}
+<h1>Search Recipes by Nutrients</h1>
+<form method="get" action="{% url 'search_by_nutrients' %}">
+    <label for="minProtein">Min Protein (grams):</label>
+    <input type="number" id="minProtein" name="minProtein" value="0">
+
+    <label for="maxCalories">Max Calories:</label>
+    <input type="number" id="maxCalories" name="maxCalories" value="400">
+
+    <label for="minCarbs">Min Carbs (grams):</label>
+    <input type="number" id="minCarbs" name="minCarbs" value="30">
+
+    <label for="maxFat">Max Fat (grams):</label>
+    <input type="number" id="maxFat" name="maxFat" value="100">
+
+    <label for="number">Number of Recipes:</label>
+    <input type="number" id="number" name="number" value="1">
+
+    <button type="submit">Search Recipes</button>
+</form>
+
+{% if recipes %}
+    <h2>Recipes:</h2>
+    <ul>
+    {% for recipe in recipes %}
+        <li>
+            <h3><a href="{% url 'recipe_details' recipe.id %}">{{ recipe.title }}</a></h3>
+            <img src="{{ recipe.image }}" alt="{{ recipe.title }}" width="200">
+            <p>ID: {{recipe.id}}</p>
+            <p>Calories: {{ recipe.calories }}</p>
+            <p>Protein: {{ recipe.protein }}g</p>
+            <p>Carbs: {{ recipe.carbs }}g</p>
+            <p>Fat: {{ recipe.fat }}g</p>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

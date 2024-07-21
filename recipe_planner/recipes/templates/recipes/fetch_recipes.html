@@ -1,0 +1,23 @@
+{% extends "recipes/base.html" %}
+
+{% block content %}
+<h1>Fetch Recipes by Tags</h1>
+<form method="get" action="{% url 'fetch_recipes' %}">
+    <label for="tags">Enter tags (comma-separated):</label>
+    <input type="text" id="tags" name="tags">
+    <button type="submit">Fetch Recipes</button>
+</form>
+
+{% if recipes %}
+    <h2>Recipes:</h2>
+    <ul>
+    {% for recipe in recipes.recipes %}
+        <li>
+            <h3>{{ recipe.title }}</h3>
+            <img src="{{ recipe.image }}" alt="{{ recipe.title }}" width="200">
+            <p>Summary: {{ recipe.summary|safe }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
