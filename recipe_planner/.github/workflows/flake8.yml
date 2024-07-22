@@ -1,4 +1,4 @@
-name: Flake8 Lint
+name: Python style check
 
 on: [push, pull_request]
 
@@ -13,7 +13,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9'
+        python-version: 3.9
 
     - name: Install dependencies
       run: |
@@ -23,5 +23,5 @@ jobs:
 
     - name: Run flake8
       run: flake8 .
-      working-directory: ROOT_DIR
+      working-directory: .
       continue-on-error: false
