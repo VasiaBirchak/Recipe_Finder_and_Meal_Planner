@@ -32,8 +32,7 @@ jobs:
 
     - name: Run tests with coverage
       run: |
-        export PYTHONPATH=$PYTHONPATH:$(pwd)
-        coverage run --source=./ -m pytest ./
+        coverage run --source=recipe_planner/ -m pytest recipe_planner/
         coverage report
       env:
         DJANGO_SETTINGS_MODULE: recipe_planner.recipe_planner.settings
