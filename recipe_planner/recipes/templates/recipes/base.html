@@ -32,7 +32,7 @@
                 </li>
                 {% endif %}
             </ul>
-            <ul class="navbar-nav ml-auto">  <!-- Використовуйте ml-auto для Bootstrap 4 -->
+            <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
