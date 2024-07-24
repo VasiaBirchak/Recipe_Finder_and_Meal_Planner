@@ -13,8 +13,11 @@
     <ul>
     {% for recipe in recipes %}
     <li>
-        <h3>{{ recipe.title }}</h3>
+        <h3>
+            <a href="{% url 'recipe_details' recipe.id %}">{{ recipe.title }}</a>
+        </h3>
         <img src="{{ recipe.image }}" alt="{{ recipe.title }}" width="200">
+        <p>ID: {{recipe.id}}</p>
         <p>Used Ingredients:</p>
         <ul>
             {% for ingredient in recipe.usedIngredients %}

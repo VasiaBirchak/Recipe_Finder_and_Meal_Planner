@@ -1,4 +1,3 @@
-# recipes/urls.py
 from django.urls import path
 from . import views
 
@@ -15,5 +14,10 @@ urlpatterns = [
          name='search_by_nutrients'),
     path('recipe/<int:recipe_id>/',
          views.recipe_details,
-         name='recipe_details')
+         name='recipe_details'),
+    path('signup/', views.signup, name='signup'),
+    path('login/', views.user_login, name='login'),
+    path('logout/', views.user_logout, name='logout'),
+    path('add-recipe-to-plan/', views.add_recipe_to_plan, name='add_recipe_to_plan'),
+    path('view-weekly-plan/', views.view_weekly_plan, name='view_weekly_plan')
 ]

@@ -1,0 +1,102 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+  <h1>Weekly meal plan</h1>
+
+  <form method="get" action="{% url 'view_weekly_plan' %}">
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+  </form>
+
+  {% if weekly_plan %}
+    {% for date, plan in weekly_plan.items %}
+      {% for day in plan.days %}
+        <h3>Day: {{ day.day }}</h3>
+        <ul>
+          {% for item in day.items %}
+            <li>
+                <strong>Taking food for</strong>
+                {% if item.slot == 1 %}
+                  Breakfast
+                {% elif item.slot == 2 %}
+                  Lunch
+                {% elif item.slot == 3 %}
+                  Dinner
+                {% else %}
+                  Unknown type
+                {% endif %}<br>
+              <strong>The name of the dish:</strong> <a href="{% url 'recipe_details' item.value.id %}">{{ item.value.title }}</a><br>
+              <strong>Cooking time:</strong> {{ item.value.readyInMinutes }} minutes<br>
+              <strong>Servings:</strong> {{ item.value.servings }}<br>
+              <img src="{{ item.value.image }}" alt="{{ item.value.title }}" style="max-width: 100px;">
+            </li>
+          {% endfor %}
+        </ul>
+
+        <details>
+          <summary>General food ration</summary>
+          <ul>
+            {% if day.nutritionSummary.nutrients %}
+              {% for nutrient in day.nutritionSummary.nutrients %}
+                <li>
+                  {{ nutrient.name }}: {{ nutrient.amount }} {{ nutrient.unit }} ({{ nutrient.percentOfDailyNeeds }}% from the daily norm)
+                </li>
+              {% endfor %}
+            {% else %}
+              <li>No data available</li>
+            {% endif %}
+          </ul>
+        </details>
+
+        <details>
+          <summary>Breakfast</summary>
+          <ul>
+            {% if day.nutritionSummaryBreakfast.nutrients %}
+              {% for nutrient in day.nutritionSummaryBreakfast.nutrients %}
+                <li>
+                  {{ nutrient.name }}: {{ nutrient.amount }} {{ nutrient.unit }} ({{ nutrient.percentOfDailyNeeds }}% from the daily norm)
+                </li>
+              {% endfor %}
+            {% else %}
+              <li>No data available</li>
+            {% endif %}
+          </ul>
+        </details>
+
+        <details>
+          <summary>Lunch</summary>
+          <ul>
+            {% if day.nutritionSummaryLunch.nutrients %}
+              {% for nutrient in day.nutritionSummaryLunch.nutrients %}
+                <li>
+                  {{ nutrient.name }}: {{ nutrient.amount }} {{ nutrient.unit }} ({{ nutrient.percentOfDailyNeeds }}% from the daily norm)
+                </li>
+              {% endfor %}
+            {% else %}
+              <li>No data available</li>
+            {% endif %}
+          </ul>
+        </details>
+
+        <details>
+          <summary>Dinner</summary>
+          <ul>
+            {% if day.nutritionSummaryDinner.nutrients %}
+              {% for nutrient in day.nutritionSummaryDinner.nutrients %}
+                <li>
+                  {{ nutrient.name }}: {{ nutrient.amount }} {{ nutrient.unit }} ({{ nutrient.percentOfDailyNeeds }}% від добової норми)
+                </li>
+              {% endfor %}
+            {% else %}
+              <li>No data available</li>
+            {% endif %}
+          </ul>
+        </details>
+
+        <hr>
+      {% endfor %}
+    {% endfor %}
+  {% else %}
+    <p>{{ error }}</p>
+  {% endif %}
+{% endblock %}

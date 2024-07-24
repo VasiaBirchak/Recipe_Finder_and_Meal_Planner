@@ -13,14 +13,4 @@
 
 <h2>Instructions:</h2>
 <p>{{ recipe.instructions|safe }}</p>
-
-<h2>Nutrition:</h2>
-<ul>
-    <li>Calories: {{ recipe.nutrition.nutrients.0.amount }} {{ recipe.nutrition.nutrients.0.unit }}</li>
-    <li>Protein: {{ recipe.nutrition.nutrients.1.amount }} {{ recipe.nutrition.nutrients.1.unit }}</li>
-    <li>Fat: {{ recipe.nutrition.nutrients.2.amount }} {{ recipe.nutrition.nutrients.2.unit }}</li>
-    <li>Carbs: {{ recipe.nutrition.nutrients.3.amount }} {{ recipe.nutrition.nutrients.3.unit }}</li>
-</ul>
-
-<!-- <a href="{% url 'search_by_nutrients' %}">Back to Search</a> -->
 {% endblock %}

@@ -1,0 +1,19 @@
+{% extends "recipes/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if messages %}
+        <div class="alert alert-{{ messages.first.tags }} mt-4">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <h2>Add a dish to the meal plan</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add to plan</button>
+    </form>
+</div>
+{% endblock %}
