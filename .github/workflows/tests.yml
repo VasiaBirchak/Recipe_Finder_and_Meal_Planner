@@ -32,10 +32,10 @@ jobs:
 
     - name: Run tests with coverage
       run: |
-        coverage run --source=myblog/ -m pytest myblog/
+        coverage run --source=recipe_planner/ -m pytest recipe_planner/
         coverage report
       env:
-        DJANGO_SETTINGS_MODULE: myblog.settings
+        DJANGO_SETTINGS_MODULE: recipe_planner.settings
         DATABASE_URL: postgres://postgres:postgres@localhost:5432/github_actions
         DB_USER: postgres
         DB_PASSWORD: postgres
