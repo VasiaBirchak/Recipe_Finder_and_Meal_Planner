@@ -32,6 +32,7 @@ jobs:
 
     - name: Run tests with coverage
       run: |
+        export PYTHONPATH=$PYTHONPATH:$(pwd)
         coverage run --source=./ -m pytest ./
         coverage report
       env:
