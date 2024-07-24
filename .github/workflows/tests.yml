@@ -35,7 +35,7 @@ jobs:
         coverage run --source=./ -m pytest ./
         coverage report
       env:
-        DJANGO_SETTINGS_MODULE: recipe_planner.settings
+        DJANGO_SETTINGS_MODULE: recipe_planner.recipe_planner.settings
         DATABASE_URL: postgres://postgres:postgres@localhost:5432/github_actions
         DB_USER: postgres
         DB_PASSWORD: postgres
