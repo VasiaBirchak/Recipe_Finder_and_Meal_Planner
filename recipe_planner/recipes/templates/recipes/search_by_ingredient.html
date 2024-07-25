@@ -17,7 +17,6 @@
             <a href="{% url 'recipe_details' recipe.id %}">{{ recipe.title }}</a>
         </h3>
         <img src="{{ recipe.image }}" alt="{{ recipe.title }}" width="200">
-        <p>ID: {{recipe.id}}</p>
         <p>Used Ingredients:</p>
         <ul>
             {% for ingredient in recipe.usedIngredients %}
@@ -30,6 +29,7 @@
                 <li>{{ ingredient.original }}</li>
             {% endfor %}
         </ul>
+        <p>Recipe id: {{recipe.id}}</p>
     </li>
     {% endfor %}
     </ul>

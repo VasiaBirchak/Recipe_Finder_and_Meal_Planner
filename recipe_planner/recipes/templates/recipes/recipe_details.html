@@ -3,7 +3,8 @@
 {% block content %}
 <h1>{{ recipe.title }}</h1>
 <img src="{{ recipe.image }}" alt="{{ recipe.title }}" width="300">
-
+<p>Ready in: {{recipe.readyInMinutes}} minutes</p>
+<p>Servings number: {{recipe.servings}}</p>
 <h2>Ingredients:</h2>
 <ul>
     {% for ingredient in recipe.extendedIngredients %}
@@ -13,4 +14,15 @@
 
 <h2>Instructions:</h2>
 <p>{{ recipe.instructions|safe }}</p>
+<ul>
+    <li>Vegetarian: {{ recipe.vegetarian|yesno:"Yes,No" }}</li>
+    <li>Vegan: {{ recipe.vegan|yesno:"Yes,No" }}</li>
+    <li>Gluten Free: {{ recipe.glutenFree|yesno:"Yes,No" }}</li>
+    <li>Dairy Free: {{ recipe.dairyFree|yesno:"Yes,No" }}</li>
+    <li>Very Healthy: {{ recipe.veryHealthy|yesno:"Yes,No" }}</li>
+    <li>Cheap: {{ recipe.cheap|yesno:"Yes,No" }}</li>
+    <li>Very Popular: {{ recipe.veryPopular|yesno:"Yes,No" }}</li>
+    <li>Sustainable: {{ recipe.sustainable|yesno:"Yes,No" }}</li>
+    <li>Recipe id: {{ recipe.id}}</li>
+</ul>
 {% endblock %}

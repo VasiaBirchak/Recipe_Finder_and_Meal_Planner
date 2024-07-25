@@ -28,11 +28,11 @@
         <li>
             <h3><a href="{% url 'recipe_details' recipe.id %}">{{ recipe.title }}</a></h3>
             <img src="{{ recipe.image }}" alt="{{ recipe.title }}" width="200">
-            <p>ID: {{recipe.id}}</p>
             <p>Calories: {{ recipe.calories }}</p>
             <p>Protein: {{ recipe.protein }}g</p>
             <p>Carbs: {{ recipe.carbs }}g</p>
             <p>Fat: {{ recipe.fat }}g</p>
+            <p>Recipe id: {{recipe.id}}</p>
         </li>
     {% endfor %}
     </ul>

@@ -18,6 +18,7 @@
             </h3>
             <img src="{{ recipe.image }}" alt="{{ recipe.title }}" width="200">
             <p>Summary: {{ recipe.summary|safe }}</p>
+            <p>Recipe id: {{recipe.id}}</p>
         </li>
     {% endfor %}
     </ul>

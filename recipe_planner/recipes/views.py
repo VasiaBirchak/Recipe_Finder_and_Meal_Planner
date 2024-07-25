@@ -201,7 +201,6 @@ def view_weekly_plan(request):
     response = requests.get(url, headers=headers, params=querystring)
     if response.status_code == 200:
         weekly_plan = response.json()
-        print(weekly_plan)
         return render(request, 'recipes/view_weekly_plan.html',
                       {'weekly_plan': {date: weekly_plan}, 'form': form})
     else:
