@@ -9,7 +9,8 @@ Login: Users can login using their login and password.
 Logout: Authorized users can log out of their account.
 2. Search for recipes
 
-By Tags: Users can find random recipes by selecting tags (eg vegetarian, desserts).
+By Tags: Users can find random recipes by selecting tags (eg vegetarian, desserts and so on).
+![Search for recipes by tags](images/search_recipes_by_tags.png)
 By Ingredients: Users can search for recipes by specifying the ingredients they have.
 By Nutrition: Users can find recipes based on parameters such as minimum protein, maximum calories, minimum carbohydrates, and maximum fat.
 3. View recipe details
