@@ -38,6 +38,12 @@ def mock_requests_get():
         yield mock_get
 
 
+@pytest.fixture
+def mock_requests_delete():
+    with patch('requests.delete') as mock_delete:
+        yield mock_delete
+
+
 @pytest.mark.django_db
 def test_fetch_recipes(client, requests_mock):
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random"
@@ -89,3 +95,17 @@ def test_view_weekly_plan(client, user, user_profile, mock_dotenv, mock_requests
     assert response.status_code == 200
     content = response.content.decode()
     assert 'Select a date:' in content
+
+
+@pytest.mark.django_db
+def test_delete_recipe_from_plan(client, user, user_profile, mock_dotenv, mock_requests_delete):
+    client.login(username='testuser', password='testpass')
+    item_id = 1
+    mock_response = mock_requests_delete.return_value
+    mock_response.status_code = 200
+
+    response = client.post(reverse('delete_recipe_from_plan', args=[item_id]))
+    assert response.status_code == 302
+    messages = list(response.wsgi_request._messages)
+    assert len(messages) == 1
+    assert str(messages[0]) == 'The dish has been successfully removed from the plan!'

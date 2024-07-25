@@ -19,5 +19,8 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
     path('add-recipe-to-plan/', views.add_recipe_to_plan, name='add_recipe_to_plan'),
-    path('view-weekly-plan/', views.view_weekly_plan, name='view_weekly_plan')
+    path('view-weekly-plan/', views.view_weekly_plan, name='view_weekly_plan'),
+    path('delete_recipe_from_plan/<int:item_id>/',
+         views.delete_recipe_from_plan,
+         name='delete_recipe_from_plan')
 ]

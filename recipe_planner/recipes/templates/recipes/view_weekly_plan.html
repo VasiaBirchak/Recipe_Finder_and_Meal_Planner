@@ -2,7 +2,13 @@
 
 {% block content %}
   <h1>Weekly meal plan</h1>
-
+   {% if messages %}
+   <div class="alert alert-{{ messages.first.tags }} mt-4">
+      {% for message in messages %}
+          {{ message }}
+      {% endfor %}
+   </div>
+    {% endif %}
   <form method="get" action="{% url 'view_weekly_plan' %}">
     {{ form.as_p }}
     <button type="submit">Update</button>
@@ -15,6 +21,7 @@
         <ul>
           {% for item in day.items %}
             <li>
+                <h1>{{item.id}}</h1>
                 <strong>Taking food for</strong>
                 {% if item.slot == 1 %}
                   Breakfast
@@ -29,6 +36,10 @@
               <strong>Cooking time:</strong> {{ item.value.readyInMinutes }} minutes<br>
               <strong>Servings:</strong> {{ item.value.servings }}<br>
               <img src="{{ item.value.image }}" alt="{{ item.value.title }}" style="max-width: 100px;">
+              <form method="post" action="{% url 'delete_recipe_from_plan' item.id %}">
+                {% csrf_token %}
+                <button type="submit">Remove</button>
+              </form>
             </li>
           {% endfor %}
         </ul>

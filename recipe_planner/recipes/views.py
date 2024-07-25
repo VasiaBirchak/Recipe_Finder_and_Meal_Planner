@@ -201,8 +201,30 @@ def view_weekly_plan(request):
     response = requests.get(url, headers=headers, params=querystring)
     if response.status_code == 200:
         weekly_plan = response.json()
+        print(weekly_plan)
         return render(request, 'recipes/view_weekly_plan.html',
                       {'weekly_plan': {date: weekly_plan}, 'form': form})
     else:
         return render(request, 'recipes/view_weekly_plan.html',
                       {'error': 'Failed to get meal plan. Try again.'})
+
+
+@login_required
+def delete_recipe_from_plan(request, item_id):
+    load_dotenv()
+    user_profile = UserProfile.objects.get(user=request.user)
+    spoonacular_hash = user_profile.spoonacular_hash
+    url = ("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/"
+           f"mealplanner/{user_profile.spoonacular_username}/items/{item_id}")
+    querystring = {"hash": spoonacular_hash}
+    headers = {
+        "x-rapidapi-key": os.getenv('RAPIDAPI_KEY'),
+        "x-rapidapi-host": os.getenv('RAPIDAPI_HOST'),
+        "Content-Type": "application/json"
+    }
+    response = requests.delete(url, headers=headers, params=querystring)
+    if response.status_code == 200:
+        messages.success(request, 'The dish has been successfully removed from the plan!')
+    else:
+        messages.error(request, 'Failed to remove dish from meal plan. Try again.')
+    return redirect('view_weekly_plan')
