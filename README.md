@@ -90,6 +90,11 @@ python manage.py createsuperuser
 Configuration Files:
 .env: Stores sensitive data such as API key and host.
 
+## How to Use
+Sign up for RapidAPI and get an API key for Spoonacular.
+Create an .env file and place it in the root of your project so it's easy to find and use.
+Add the API key and host to the .env file.
+
 Example .env File:
 
 ```bash
@@ -100,18 +105,15 @@ Run the Development Server:
 ```bash
 python manage.py runserver
 ```
-How to Use
-Sign up for RapidAPI and get an API key for Spoonacular.
-Create an .env file and place it in the root of your project so it's easy to find and use.
-Add the API key and host to the .env file.
+]
 
 
-Launching:
+### Launching:
 Use Django to run a local server.
 Go to the web interface and use the functionality for registration, authorization, recipe search, and meal planning.
 This app provides a convenient tool for finding recipes and planning meals, which can be useful for anyone who wants to organize their meals more efficiently.
 
-Development and Testing
+### Development and Testing
 
 Install the Development Dependencies:
 
