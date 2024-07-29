@@ -66,3 +66,61 @@ If the meal is successfully removed from the user's meal plan, a message is disp
 ```bash
 git clone https://github.com/VasiaBirchak/Recipe_Finder_and_Meal_Planner.git
 cd recipe_planner
+```
+### Create and Activate a Virtual Environment:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+Install the Required Packages:
+
+```bash
+pip install -r requirements.txt
+```
+Apply Migrations:
+
+```bash
+python manage.py migrate
+```
+Create a Superuser:
+
+```bash
+python manage.py createsuperuser
+```
+Configuration Files:
+.env: Stores sensitive data such as API key and host.
+
+Example .env File:
+
+```bash
+RAPIDAPI_KEY=your_api_key
+RAPIDAPI_HOST=your_api_host
+```
+Run the Development Server:
+```bash
+python manage.py runserver
+```
+How to Use
+Sign up for RapidAPI and get an API key for Spoonacular.
+Create an .env file and place it in the root of your project so it's easy to find and use.
+Add the API key and host to the .env file.
+
+
+Launching:
+Use Django to run a local server.
+Go to the web interface and use the functionality for registration, authorization, recipe search, and meal planning.
+This app provides a convenient tool for finding recipes and planning meals, which can be useful for anyone who wants to organize their meals more efficiently.
+
+Development and Testing
+
+Install the Development Dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+Run the Tests:
+
+```bash
+pytest
+```
+Tests are located in the recipes/tests/ directory.
