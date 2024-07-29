@@ -82,7 +82,7 @@ Settings:
 Sign up for RapidAPI and get an API key for Spoonacular.
 Create an .env file and place it in the root of your project so it's easy to find and use.
 Add the API key and host to the .env file.
-![env file](images/env.png.png)
+![env file](images/env.png)
 
 
 Run the development server:
