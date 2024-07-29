@@ -105,7 +105,6 @@ Run the Development Server:
 ```bash
 python manage.py runserver
 ```
-]
 
 
 ### Launching:
