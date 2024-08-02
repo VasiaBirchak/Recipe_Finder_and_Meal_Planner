@@ -53,9 +53,10 @@ def user_logout(request):
 def fetch_recipes(request):
     load_dotenv()
     tags = request.GET.get('tags', 'vegetarian,dessert')  # Default tags
+    number = request.GET.get('number', 1)
     url = ("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/"
            "recipes/random")
-    querystring = {"tags": tags, "number": "1"}
+    querystring = {"tags": tags, "number": number}
     headers = {
         'X-RAPIDAPI-KEY': os.getenv('RAPIDAPI_KEY'),
         'X-RAPIDAPI-HOST': os.getenv('RAPIDAPI_HOST')
@@ -70,11 +71,12 @@ def search_by_ingredient(request):
     recipes = None
     if 'ingredients' in request.GET:
         ingredients = request.GET['ingredients']
+        number = request.GET.get('number', 1)
         url = ("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/"
                "recipes/findByIngredients")
         querystring = {
             "ingredients": ingredients,
-            "number": "5",
+            "number": number,
             "ignorePantry": "true",
             "ranking": "1"
         }

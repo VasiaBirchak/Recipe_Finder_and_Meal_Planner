@@ -94,7 +94,7 @@
             {% if day.nutritionSummaryDinner.nutrients %}
               {% for nutrient in day.nutritionSummaryDinner.nutrients %}
                 <li>
-                  {{ nutrient.name }}: {{ nutrient.amount }} {{ nutrient.unit }} ({{ nutrient.percentOfDailyNeeds }}% від добової норми)
+                  {{ nutrient.name }}: {{ nutrient.amount }} {{ nutrient.unit }} ({{ nutrient.percentOfDailyNeeds }}% from the daily norm)
                 </li>
               {% endfor %}
             {% else %}

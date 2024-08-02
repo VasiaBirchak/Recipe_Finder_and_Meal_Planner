@@ -5,6 +5,8 @@
 <form method="get" action="{% url 'fetch_recipes' %}">
     <label for="tags">Enter tags (comma-separated):</label>
     <input type="text" id="tags" name="tags">
+    <label for="number">Number of Recipes:</label>
+    <input type="number" id="number" name="number" value="1">
     <button type="submit">Fetch Recipes</button>
 </form>
 
